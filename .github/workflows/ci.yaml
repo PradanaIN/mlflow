@@ -27,7 +27,7 @@ jobs:
           auto-update-conda: true
           python-version: 3.10
           activate-environment: mlflow-env
-          environment-file: MLProject/conda.yaml
+          environment-file: workflow_ci/conda.yaml
           use-mamba: true
 
       - name: Check environment
@@ -36,9 +36,9 @@ jobs:
       - name: Set MLflow Tracking URI
         run: echo "MLFLOW_TRACKING_URI=http://127.0.0.1:5000" >> $GITHUB_ENV
 
-      - name: Run MLflow Project
+      - name: Run workflow_ci Project
         run: |
-          mlflow run MLProject --env-manager=conda --experiment-name "student-performance-classification"
+          mlflow run workflow_ci --env-manager=conda --experiment-name "student-performance-classification"
 
       - name: Upload model artefacts to repo
         uses: actions/upload-artifact@v4
