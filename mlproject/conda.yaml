@@ -6,11 +6,12 @@ dependencies:
   - python=3.11
   - pip
   - pip:
-      - pandas==2.2.2
-      - numpy==1.26.4
-      - scikit-learn==1.4.2
-      - matplotlib==3.8.4
-      - seaborn==0.13.2
-      - mlflow==2.12.1
-  - mlflow # Required for CLI
-  - scikit-learn
+      - mlflow
+      - pandas
+      - scikit-learn
+      - numpy
+      - matplotlib
+      - seaborn
+      - ipykernel
+      - jupyterlab
+      - mamba
