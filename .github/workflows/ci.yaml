@@ -14,9 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-      - uses: actions/upload-artifact@v2
-        with:
-          name: mlflow-artifacts
+        uses: actions/checkout@v2
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,7 +27,7 @@ jobs:
           auto-update-conda: true
           python-version: 3.10
           activate-environment: mlflow-env
-          environment-file: conda.yaml
+          environment-file: MLProject/conda.yaml
           use-mamba: true
 
       - name: Check environment
@@ -40,9 +38,9 @@ jobs:
 
       - name: Run MLflow Project
         run: |
-          mlflow run . --env-manager=conda --no-conda --experiment-name "student-performance-classification" --experiment-id 1
+          mlflow run MLProject --env-manager=conda --experiment-name "student-performance-classification"
 
-      - name: Upload model artefacts to repo (optional)
+      - name: Upload model artefacts to repo
         uses: actions/upload-artifact@v3
         with:
           name: mlflow-artifacts
