@@ -41,7 +41,7 @@ jobs:
           mlflow run MLProject --env-manager=conda --experiment-name "student-performance-classification"
 
       - name: Upload model artefacts to repo
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: mlflow-artifacts
           path: ./mlruns
