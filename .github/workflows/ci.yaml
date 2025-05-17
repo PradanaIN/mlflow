@@ -30,6 +30,9 @@ jobs:
           environment-file: ./mlproject/conda.yaml
           use-mamba: true
 
+        - name: Install mlflow
+        run: conda install -n mlflow-env mlflow -y
+
       - name: Check environment
         run: conda list
 
@@ -37,7 +40,7 @@ jobs:
         run: echo "MLFLOW_TRACKING_URI=http://127.0.0.1:5000" >> $GITHUB_ENV
 
       - name: Run workflow_ci Project
-        run: |
+        run: 
           mlflow run workflow_ci --env-manager=conda --experiment-name "student-performance-classification"
 
       - name: Upload model artefacts to repo
