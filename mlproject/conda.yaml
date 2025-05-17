@@ -1,5 +1,6 @@
 name: mlflow-env
 channels:
+  - conda-forge # Added conda-forge for broader package availability
   - defaults
 dependencies:
   - python=3.10
