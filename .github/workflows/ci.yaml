@@ -19,13 +19,13 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Install conda
         uses: goanpeca/setup-miniconda@v2
         with:
           auto-update-conda: true
-          python-version: 3.10
+          python-version: 3.11
           activate-environment: mlflow-env
           environment-file: ./mlproject/conda.yaml
           use-mamba: true

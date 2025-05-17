@@ -3,7 +3,7 @@ channels:
   - conda-forge # Added conda-forge for broader package availability
   - defaults
 dependencies:
-  - python=3.12.7
+  - python=3.11
   - pip
   - pip:
       - pandas==2.2.2
