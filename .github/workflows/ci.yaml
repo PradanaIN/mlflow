@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -41,7 +41,7 @@ jobs:
           mlflow run MLProject --env-manager=conda --experiment-name "student-performance-classification"
 
       - name: Upload model artefacts to repo
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: mlflow-artifacts
           path: ./mlruns
