@@ -32,7 +32,7 @@ def main(data_path):
     X_test[numeric_cols] = scaler.transform(X_test[numeric_cols])
 
     # Inisialisasi tracking MLflow
-    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    # mlflow.set_tracking_uri("http://127.0.0.1:5000")
     mlflow.set_experiment("student-performance-classification")
 
     # Dictionary model
