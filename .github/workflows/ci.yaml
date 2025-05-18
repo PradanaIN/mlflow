@@ -42,7 +42,7 @@ jobs:
 
       - name: Run MLflow Project
         run: |
-          mlflow run workflow_ci --env-manager=conda --experiment-name "student-performance-classification"
+          mlflow run ./mlproject --env-manager=local --experiment-name "student-performance-classification"
 
       - name: Upload model artefacts to GitHub
         uses: actions/upload-artifact@v4
