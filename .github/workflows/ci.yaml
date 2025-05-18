@@ -2,9 +2,11 @@ name: CI - MLflow Project
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   run-mlflow-project:
@@ -17,31 +19,32 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
-      - name: Install MLflow manually
-        run: pip install mlflow
-
-      - name: Install conda
+      - name: Install Conda (with Mamba)
         uses: goanpeca/setup-miniconda@v2
         with:
           auto-update-conda: true
-          python-version: 3.11
+          python-version: 3.10
           activate-environment: mlflow-env
           environment-file: ./mlproject/conda.yaml
           use-mamba: true
 
-      - name: Check environment
+      - name: Check conda environment
         run: conda list
 
-      - name: Set MLflow Tracking URI
-        run: echo "MLFLOW_TRACKING_URI=http://127.0.0.1:5000" >> $GITHUB_ENV
+      - name: Install MLflow CLI (ensure available in PATH)
+        run: pip install mlflow
+
+      # Optional: install additional Python dependencies (if any)
+      - name: Install additional Python dependencies
+        run: pip install -r ./mlproject/requirements.txt
 
       - name: Run MLflow Project
         run: |
           mlflow run workflow_ci --env-manager=conda --experiment-name "student-performance-classification"
 
-      - name: Upload model artefacts to repo
+      - name: Upload model artefacts to GitHub
         uses: actions/upload-artifact@v4
         with:
           name: mlflow-artifacts
