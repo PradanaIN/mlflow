@@ -28,7 +28,7 @@ jobs:
           auto-update-conda: true
           python-version: 3.11
           activate-environment: mlflow-env
-          environment-file: workflow_ci/mlproject/conda.yaml
+          environment-file: ../mlproject/conda.yaml
           use-mamba: true
 
       - name: Check environment
