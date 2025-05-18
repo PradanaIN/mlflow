@@ -3,7 +3,7 @@ channels:
   - conda-forge # Added conda-forge for broader package availability
   - defaults
 dependencies:
-  - python=3.11
+  - python=3.10
   - mlflow
   - pip
   - pip:
